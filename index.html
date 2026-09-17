@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Our Date ❤️</title>
+<style>
+body{font-family:Arial;text-align:center;background:#fff0f6;color:#a33d70;padding:25px}
+.card{background:white;padding:25px;border-radius:25px;max-width:450px;margin:40px auto;box-shadow:0 5px 20px #e8b8cd}
+button{padding:14px 25px;border:0;border-radius:15px;background:#ed75a5;color:white;font-size:18px;margin:8px}
+input,select{padding:12px;margin:8px;border:1px solid pink;border-radius:10px;width:90%;box-sizing:border-box}
+.hidden{display:none}
+</style>
+</head>
+<body>
+<div class="card" id="first">
+<h1 id="question">Will you go out with me? ❤️</h1>
+<button onclick="next()">Yes 💖</button>
+<button onclick="no()">No 🙈</button>
+</div>
+<div class="card hidden" id="second">
+<h1>Yay! Let's plan our date! 💕</h1>
+<select id="activity">
+<option>Movie Date 🎬</option>
+<option>Dinner Date 🍽️</option>
+<option>Cafe Date ☕</option>
+<option>Evening Hangout 🌆</option>
+<option>Fun Adventure 🎡</option>
+</select>
+<input type="date" id="date">
+<input type="time" id="time">
+<input id="place" placeholder="Enter a location">
+<button onclick="confirmDate()">Confirm Our Date 💗</button>
+</div>
+<div class="card hidden" id="third">
+<h1>It's a date! 🥰</h1>
+<p id="result"></p>
+<h2>Can't wait to see you! ❤️</h2>
+</div>
+<script>
+let messages=["Are you sure? 🥺","Please reconsider! 💕","One more chance? 🥹","Pretty please? 🌷"];
+function no(){document.getElementById("question").textContent=messages[Math.floor(Math.random()*messages.length)];}
+function next(){first.classList.add("hidden");second.classList.remove("hidden");}
+function confirmDate(){
+if(!date.value||!time.value||!place.value.trim()){alert("Please complete all fields!");return;}
+second.classList.add("hidden");third.classList.remove("hidden");
+result.textContent=activity.value+" | "+date.value+" | "+time.value+" | "+place.value;
+}
+</script>
+</body>
+</html>
