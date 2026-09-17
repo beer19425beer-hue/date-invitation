@@ -121,6 +121,7 @@ input,select{
   <section id="page1" class="page active">
     <div class="heart">💌</div>
     <h1>Will you go out with me?</h1>
+
     <p>
       I have a little question for you...<br>
       Will you spend a special day with me? 💗
@@ -130,6 +131,7 @@ input,select{
       <button class="yes" onclick="showPage('page2')">
         Yes! 💖
       </button>
+
       <button class="no" onclick="noClick()">
         No 🙈
       </button>
@@ -146,6 +148,7 @@ input,select{
     <p>Choose your favorite date plan ✨</p>
 
     <form id="dateForm">
+
       <div class="field">
         <label for="date">📅 Date</label>
         <input type="date" id="date" required>
@@ -158,18 +161,20 @@ input,select{
 
       <div class="field">
         <label for="activity">💕 What should we do?</label>
+
         <select id="activity" required>
           <option value="">Choose an activity</option>
           <option>🎬 Watch a movie</option>
           <option>🍽️ Dinner together</option>
           <option>☕ Go to a cafe</option>
-          <option>🌆 Evening walk</option>
-          <option>🎡 Fun activities</option>
+          <option>🌆 Go out and hang out</option>
+          <option>🎁 Whatever you want — surprise me!</option>
         </select>
       </div>
 
       <div class="field">
         <label for="location">📍 Location</label>
+
         <input
           id="location"
           type="text"
@@ -239,10 +244,11 @@ function showPage(pageId){
 function noClick(){
   document.getElementById("message").textContent =
     messages[count % messages.length];
+
   count++;
 }
 
-// Submit the date form and show the FINAL summary page
+// Submit the form and show the final summary page
 document.getElementById("dateForm").addEventListener("submit", function(e){
   e.preventDefault();
 
@@ -282,7 +288,7 @@ document.getElementById("dateForm").addEventListener("submit", function(e){
     result.appendChild(p);
   });
 
-  // Go to page 3 only after saving the form
+  // Show PAGE 3 after saving
   showPage("page3");
 });
 
