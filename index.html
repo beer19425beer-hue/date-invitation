@@ -135,8 +135,9 @@ input,select{
       </button>
     </div>
 
-    <p id="message"></p>
+    <p id="message" aria-live="polite"></p>
   </section>
+
 
   <!-- PAGE 2: DATE FORM -->
   <section id="page2" class="page">
@@ -182,12 +183,13 @@ input,select{
       </button>
     </form>
 
-    <button class="back" onclick="showPage('page1')">
+    <button class="back" type="button" onclick="showPage('page1')">
       ← Back
     </button>
   </section>
 
-  <!-- PAGE 3: FINAL SAVED RESULT -->
+
+  <!-- PAGE 3: FINAL SUMMARY -->
   <section id="page3" class="page">
     <div class="heart">💖</div>
     <h1>It's a date!</h1>
@@ -209,17 +211,17 @@ input,select{
   <div class="footer">Made with love 💗</div>
 </div>
 
+
 <script>
 let count = 0;
 
 const messages = [
   "Are you sure? 🥺",
-  "Please think about it! 💗",
-  "One more chance? 🌷",
-  "Pretty please? 🥹",
-  "I'll make it a lovely day! 💖"
+  "That's okay! 💗",
+  "Thanks for being honest 🌷"
 ];
 
+// Switch between pages
 function showPage(pageId){
   document.querySelectorAll(".page").forEach(page => {
     page.classList.remove("active");
@@ -233,12 +235,14 @@ function showPage(pageId){
   });
 }
 
+// No button
 function noClick(){
   document.getElementById("message").textContent =
     messages[count % messages.length];
   count++;
 }
 
+// Submit the date form and show the FINAL summary page
 document.getElementById("dateForm").addEventListener("submit", function(e){
   e.preventDefault();
 
@@ -278,10 +282,11 @@ document.getElementById("dateForm").addEventListener("submit", function(e){
     result.appendChild(p);
   });
 
-  // เมื่อกด Save จะเปลี่ยนไปหน้า 3
+  // Go to page 3 only after saving the form
   showPage("page3");
 });
 
+// Start over
 function startOver(){
   document.getElementById("dateForm").reset();
   document.getElementById("message").textContent = "";
